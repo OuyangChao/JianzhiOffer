@@ -35,6 +35,7 @@ public:
 		if (startPre == endPre)
 			return root;
 		
+		// 在中序遍历中找到根结点的值
 		vector<int>::iterator iter = startIn;
 		while (*iter != root->val)
 		{
@@ -43,9 +44,9 @@ public:
 		
 		int len = iter - startIn;
 		if (len > 0)
-			root->left = ConstructCore(startPre + 1, startPre + len, startIn, iter - 1);
+			root->left = ConstructCore(startPre + 1, startPre + len, startIn, iter - 1); // 构建左子树
 		if (iter < endIn)
-			root->right = ConstructCore(startPre + len + 1, endPre, iter + 1, endIn);
+			root->right = ConstructCore(startPre + len + 1, endPre, iter + 1, endIn);    // 构建右子树
 		return root;
 	}
 };
